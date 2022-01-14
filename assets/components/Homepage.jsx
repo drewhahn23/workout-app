@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet, View, Pressable, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
+import Tracker from './Tracker';
+import Workouts from './Workouts';
 
-const Homepage = () => {
+const Homepage = ({ navigation }) => {
 
     return (
         <SafeAreaView>
@@ -27,12 +29,18 @@ const Homepage = () => {
                 <Text style={styles.dayWorkouts}>Overhead Tricep Extensions</Text>
                 <Text style={styles.dayWorkouts}>Close grip push-ups</Text>
                 <Text style={styles.dayWorkouts}>Dumbell Flies</Text>
-                <Text style={styles.seeMore}>See More</Text>
+                <Pressable 
+                onPress={() => 
+                navigation.navigate('Workouts', { screen: 'Workouts'})}>
+                    <Text style={styles.seeMore}>See More</Text>
+                </Pressable>
             </View>
 
             <View className='ProgressTrackerPanel' style={styles.panel2}>
                 <Text style={styles.panelText}>It looks like you don't have any exercises logged yet.</Text>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button}
+                onPress={() =>
+                navigation.navigate('Tracker', { screen: 'Tracker'})}>
                     <Text style={styles.buttonText}>Click here to start tracking your gains!</Text>
                 </Pressable>
             </View>
